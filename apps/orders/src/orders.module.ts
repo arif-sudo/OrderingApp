@@ -13,7 +13,8 @@ import { Order, OrderSchema } from './schemas/order.schema';
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: joi.object({
-        DATABASE_URI: joi.string().required()
+        DATABASE_URI: joi.string().required(),
+        PORT: joi.number().required()
       }),
       envFilePath: './apps/orders/.env'
     }),
