@@ -9,7 +9,7 @@ export class UsersController {
 
     @Post()
     async createUser(@Body() request: CreateUserRequest) {
-        this.userService.createUser(request)
+        return this.userService.createUser(request)
     }
 
 }

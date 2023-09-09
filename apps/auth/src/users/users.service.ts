@@ -3,6 +3,7 @@ import { UserRepository } from './user.repo';
 import { CreateUserRequest } from './dto/create-user.request';
 import { User } from './schemas/user.schema';
 import * as bcrypt from 'bcryptjs'
+import { JwtStrategy } from '../strategies/jwt.strategt';
 
 @Injectable()
 export class UsersService {
