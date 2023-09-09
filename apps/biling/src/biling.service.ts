@@ -7,8 +7,7 @@ export class BilingService {
   getHello(): string {
     return 'Hello World! fvrom biling';
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async bill(data: any, context) {
+  async bill(data: any) {
     this.logger.log('Billing... ', data)
   }
 }
