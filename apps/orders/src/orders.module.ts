@@ -8,7 +8,7 @@ import { OrderRepository } from './orders.repo';
 import { MongooseModule } from '@nestjs/mongoose'
 import { Order, OrderSchema } from './schemas/order.schema';
 import { RmqModule } from '@app/common/rmq/rmq.module';
-import { BILING_SERVICE } from './constants/services';
+import { BILLING_SERVICE } from './constants/services';
 
 @Module({
   imports: [
@@ -18,12 +18,12 @@ import { BILING_SERVICE } from './constants/services';
         DATABASE_URI: joi.string().required(),
         PORT: joi.number().required()
       }),
-      envFilePath: './apps/orders/.env'
+      envFilePath: '/apps/orders/.env'
     }),
     DatabaseModule,
     MongooseModule.forFeature([{ name: Order.name, schema: OrderSchema }]),
     RmqModule.register({
-      name: BILING_SERVICE
+      name: BILLING_SERVICE
     })
   ],
   controllers: [OrdersController],

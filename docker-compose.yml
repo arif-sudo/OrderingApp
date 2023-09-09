@@ -4,7 +4,7 @@ services:
   orders:
     build:
       context: .
-      dockerfile: '/apps/orders/Dockerfile'
+      dockerfile: './apps/orders/Dockerfile'
       target: development
     command: npm run start:dev orders
     env_file:
@@ -13,6 +13,7 @@ services:
       - mongodb-primary
       - mongodb-secondary
       - mongodb-arbiter
+      - rabbitmq
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
@@ -26,11 +27,12 @@ services:
       target: development
     command: npm run start:dev biling
     env_file:
-      - '/apps/biling/.env'
+      - './apps/biling/.env'
     depends_on:
       - mongodb-primary
       - mongodb-secondary
       - mongodb-arbiter
+      - rabbitmq 
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules

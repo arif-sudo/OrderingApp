@@ -10,9 +10,10 @@ import * as joi from 'joi'
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: joi.object({
-        RMQ_URI: joi.string().required(),
-        RMQ_BILING_QUEUE: joi.string().required()
-      })
+        RMQ_URI: 'amqp://rabbitmq:5672',
+        RMQ_BILLING_QUEUE: 'billing'
+      }),
+      envFilePath: './apps/biling/.env'
     }),
     RmqModule
   ],

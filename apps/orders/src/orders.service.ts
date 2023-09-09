@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { CreateOrderRequest } from './dto/create-order.request';
 import { OrderRepository } from './orders.repo';
-import { BILING_SERVICE } from './constants/services';
+import { BILLING_SERVICE } from './constants/services';
 import { ClientProxy } from '@nestjs/microservices';
 import { lastValueFrom } from 'rxjs';
 //Client proxy is a communication layer that allows one microservice to interact with another microservice
@@ -11,7 +11,7 @@ import { lastValueFrom } from 'rxjs';
 @Injectable()
 export class OrdersService {
   constructor(private readonly orderRepository: OrderRepository,
-    @Inject(BILING_SERVICE) private bilingClient: ClientProxy) { }
+    @Inject(BILLING_SERVICE) private bilingClient: ClientProxy) { }
   //bilingclient will return an observable
 
   async create(request: CreateOrderRequest) {
