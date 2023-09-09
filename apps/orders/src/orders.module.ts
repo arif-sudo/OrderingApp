@@ -18,7 +18,7 @@ import { BILLING_SERVICE } from './constants/services';
         DATABASE_URI: joi.string().required(),
         PORT: joi.number().required()
       }),
-      envFilePath: '/apps/orders/.env'
+      envFilePath: './apps/orders/.env'
     }),
     DatabaseModule,
     MongooseModule.forFeature([{ name: Order.name, schema: OrderSchema }]),

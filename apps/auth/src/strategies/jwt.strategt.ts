@@ -4,8 +4,9 @@ import { ConfigService } from '@nestjs/config';
 import { UsersService } from '../users/users.service';
 import { TokenPayload } from '../auth.service';
 import { Types } from 'mongoose';
-import { UnauthorizedException } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 
+@Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
     constructor(
         configService: ConfigService,
