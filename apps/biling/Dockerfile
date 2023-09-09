@@ -1,28 +1,28 @@
-# FROM node:alphine As development
+FROM node:alpine As development
 
-# WORKDIR /usr/src/app
+WORKDIR /usr/src/app
 
-# COPY package*.json ./
+COPY package*.json ./
 
-# RUN npm install
+RUN npm install
 
-# COPY . .
+COPY . .
 
-# RUN npm run build
+RUN npm run build
 
-# FROM node:alphine As production
+FROM node:alpine As production
 
-# ARG NODE_ENV = production
-# ENV NODE_ENV = ${NODE_ENV}
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
 
-# WORKDIR /usr/src/app
+WORKDIR /usr/src/app
 
-# COPY package*.json ./
+COPY package*.json ./
 
-# RUN npm install --only=production
+RUN npm install --only=production
 
-# COPY . .
+COPY . .
 
-# COPY --from=development /usr/src/app ./dist
+COPY --from=development /usr/src/app ./dist
 
-# CMD [ "node", "dist/apps/orders/main" ]
+CMD [ "node", "dist/apps/biling/main" ]
