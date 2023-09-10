@@ -14,7 +14,7 @@ export class OrdersService {
     @Inject(BILLING_SERVICE) private bilingClient: ClientProxy) { }
   //bilingclient will return an observable
 
-  async create(request: CreateOrderRequest) {
+  async create(request: CreateOrderRequest, authentication: string) {
     //A database transaction is a single unit of work that consists of one or more SQL operations, 
     //ensuring that all operations are either completed successfully or none of them are applied to the database, maintaining data integrity.
 
@@ -23,7 +23,8 @@ export class OrdersService {
       const order = await this.orderRepository.create(request, { session: Session })
       await lastValueFrom(
         this.bilingClient.emit('order_created', {
-          request
+          request,
+          Authentication: authentication
           // The emit method sends a message to the billing service without expecting a direct response,
           // making it suitable for broadcasting events or notifications.
         })
