@@ -22,7 +22,7 @@ export class AuthController {
     response.send(user)
   }
 
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)// JwtAuthGuard which implements JwtStrategy is going to decode jwt
   @MessagePattern('validate_user')
   async validateUser(@CurrentUser() user: User) {
     return user
