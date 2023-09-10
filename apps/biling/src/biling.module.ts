@@ -4,6 +4,7 @@ import { BilingService } from './biling.service';
 import { RmqModule } from '@app/common/rmq/rmq.module';
 import { ConfigModule } from '@nestjs/config';
 import * as joi from 'joi'
+import { AuthModule } from '@app/common';
 
 @Module({
   imports: [
@@ -14,7 +15,8 @@ import * as joi from 'joi'
         RMQ_BILLING_QUEUE: joi.string().required()
       }),
     }),
-    RmqModule
+    RmqModule,
+    AuthModule
   ],
   controllers: [BilingController],
   providers: [BilingService],

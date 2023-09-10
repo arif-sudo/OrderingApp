@@ -3,7 +3,6 @@ import { UserRepository } from './user.repo';
 import { CreateUserRequest } from './dto/create-user.request';
 import { User } from './schemas/user.schema';
 import * as bcrypt from 'bcryptjs'
-import { JwtStrategy } from '../strategies/jwt.strategt';
 
 @Injectable()
 export class UsersService {
@@ -35,7 +34,7 @@ export class UsersService {
 
     async validateUser(email: string, password: string): Promise<User> {
         const user = await this.userRepository.findOne({ email })
-        const isPassValid = await bcrypt.compare(user.password, password)
+        const isPassValid = await bcrypt.compare(password, user.password)
 
         if (!isPassValid) {
             throw new UnauthorizedException('Credentials are not valid.');

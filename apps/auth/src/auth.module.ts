@@ -8,7 +8,7 @@ import * as joi from 'joi'
 import { UsersModule } from './users/users.module';
 import { JwtModule } from '@nestjs/jwt';
 import { LocalStrategy } from './strategies/local-strategy';
-import { JwtStrategy } from './strategies/jwt.strategt';
+import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
   imports: [
